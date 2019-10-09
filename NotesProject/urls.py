@@ -26,5 +26,10 @@ urlpatterns = [
     url(r'^test/$',views.TestPage.as_view(),name='test'),
     url(r'^thanks/$',views.ThanksPage.as_view(),name='thanks'),
     url(r'^signup/$',views.SignUp.as_view(),name='signup'),
+    #
+    url(r'^allNotes$',views.NoteList.as_view(),name='all'),
+    url(r'new/$',views.CreateNote.as_view(),name='create'),
+    url(r'by(?P<username>[-\w]+)',views.UserNotes.as_view(),name='user_notes'),
     url(r'by(?P<username>[-\w]+)/(?P<pk>\d+)/$',views.NoteDetail.as_view(),name='single'),
+    url(r'delete/(?P<pk>\d+)/$',views.DeleteNote.as_view(),name='delete'),
 ]

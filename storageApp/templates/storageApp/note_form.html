@@ -1,0 +1,14 @@
+{% extends "storageApp/note_base.html" %}
+
+{% load bootstrap3 %}
+
+{% block post_content %}
+<h4>Create a new Note</h4>
+<form id="noteForm" action="{% url 'create' %}" method="post">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <input type="submit" class="btn btn-primary btn-large" value="Post">
+
+</form>
+
+{% endblock %}

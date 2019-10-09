@@ -25,26 +25,25 @@
 
   <body>
     <nav class="navbar  mynav" role="navigation" id="navbar">
-    			<div class="container">
+          <div class="container">
 
-            <a class="navbar-brand mynav" href="{% url 'home' %}">Amazing Notes</a>
+            <a class="navbar-brand mynav" href="{% url 'home' %}">AwesomeNotes</a>
 
-    					<ul class="nav navbar-nav navbar-right">
-    						{% if user.is_authenticated %}
+              <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                      <li><a href="{% url 'create' %}" class="btn btn-simple">New</a></li>
+                      <li><a href="{% url 'user_notes' username=user.username %}" class="btn btn-simple">Notes</a></li>
                       <li><a href="{% url 'logout' %}" class="btn btn-simple">Log out</a></li>
-                  
-    						{% else %}
-    						      <li><a href="{% url 'login' %}" class="btn btn-simple">Log in</a></li>
-    						      <li><a href="{% url 'signup' %}" class="btn btn-simple">Sign up</a></li>
-    						{% endif %}
-    					</ul>
-              {% if user.is_authenticated %}
-
-              {% endif %}
+                {% else %}
+                      <li><a href="{% url 'login' %}" class="btn btn-simple">Log in</a></li>
+                      <li><a href="{% url 'signup' %}" class="btn btn-simple">Sign up</a></li>
+                {% endif %}
+              </ul>
 
 
-    			</div>
-    		</nav>
+
+          </div>
+        </nav>
 
 
         <div class="container mycontent">

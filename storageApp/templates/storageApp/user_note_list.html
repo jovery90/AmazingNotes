@@ -1,0 +1,19 @@
+{% extends "storageApp/note_base.html" %}
+
+{% block prepost%}
+<div class="container">
+  <h1>{{note_user.username}}</h1>
+  <br>
+</div>
+{% endblock %}
+
+{% block post_content %}
+<div class="col-md-8">
+  {% for note in note_list %}
+  <h1><a href="{% url 'single' username=note.user.username pk=note.pk %}">{{note.title}}</a></h1>
+  <h3>{{note.message_html|safe}}</h3>
+  <h5>{{note.user}}</h5>
+{% endfor %}
+</div>
+
+{% endblock %}

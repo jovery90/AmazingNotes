@@ -1,0 +1,10 @@
+{% extends "storageApp/note_base.html" %}
+
+{% block post_content %}
+<div class="col-md-8">
+  {% for note in note_list %}
+    {% include 'storageApp/_note.html' %}
+  {% endfor %}
+
+</div>
+{% endblock %}
