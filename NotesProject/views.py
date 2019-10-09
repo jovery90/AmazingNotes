@@ -60,7 +60,7 @@ class UserNotes(generic.ListView):
 
 class NoteDetail(SelectRelatedMixin, generic.DetailView):
     model = models.Note
-    select_related = ("user",)
+    select_related = ("user", "note")
 
     def get_queryset(self):
         queryset = super().get_queryset()

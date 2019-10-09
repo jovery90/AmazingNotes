@@ -13,6 +13,15 @@
   <h1><a href="{% url 'single' username=note.user.username pk=note.pk %}">{{note.title}}</a></h1>
   <h3>{{note.message_html|safe}}</h3>
   <h5>{{note.user}}</h5>
+
+    {% if user.is_authenticated and note.user == user %}
+      <a href="{% url 'delete' pk=note.pk %}" title="delete" class="btn btn-simple" >
+        <span class="glyphicon glyphicon-remove text-danger" aria-hidden='true'></span>
+        <span class="text-danger icon-label">Delete</span>
+      </a>
+    {% endif %}
+
+
 {% endfor %}
 </div>
 
