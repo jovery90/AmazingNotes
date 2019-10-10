@@ -22,11 +22,12 @@
     <!-- Adding a test style... -->
     <link href="http://codepen.io/edbond88/pen/CcgvA.css" media="screen" rel="stylesheet" type="text/css">
     <style>
-                body {<br />
-                  background: rgba(222,222,222,1);<br />
-                  margin: 20px;<br />
-                }<br />
-                </style>
+        body {<br />
+          background: rgba(222,222,222,1);<br />
+          margin: 20px;<br />
+        }<br />
+
+    </style>
   </head>
 
 
@@ -34,16 +35,16 @@
     <nav class="navbar  mynav" role="navigation" id="navbar">
           <div class="container">
 
-            <a class="navbar-brand mynav" href="{% url 'home' %}">AwesomeNotes</a>
+            <a style="font-size:3em;" class="navbar-brand mynav" href="{% url 'home' %}">Amazing Notes</a>
 
               <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                      <li><a href="{% url 'create' %}" class="btn btn-simple">New</a></li>
-                      <li><a href="{% url 'for_user' username=user.username %}" class="btn btn-simple">Notes</a></li>
-                      <li><a href="{% url 'logout' %}" class="btn btn-simple">Log out</a></li>
+                      <li><a style="font-size:1.5em;" href="{% url 'create' %}" class="btn btn-simple">New</a></li>
+                      <li><a style="font-size:1.5em;" href="{% url 'for_user' username=user.username %}" class="btn btn-simple">Notes</a></li>
+                      <li><a style="font-size:1.5em;" href="{% url 'logout' %}" class="btn btn-simple">Log out</a></li>
                 {% else %}
-                      <li><a href="{% url 'login' %}" class="btn btn-simple">Log in</a></li>
-                      <li><a href="{% url 'signup' %}" class="btn btn-simple">Sign up</a></li>
+                      <li><a style="font-size:1.5em;" href="{% url 'login' %}" class="btn btn-simple">Log in</a></li>
+                      <li><a style="font-size:1.5em;" href="{% url 'signup' %}" class="btn btn-simple">Sign up</a></li>
                 {% endif %}
               </ul>
 
