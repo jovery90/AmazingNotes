@@ -1,28 +1,19 @@
 {% extends "storageApp/note_base.html" %}
 
-{% block prepost%}
-<div class="container">
+{% block prenote %}
+
+<div class="col-md-12">
   <h1>{{note_user.username}}</h1>
-  <br>
 </div>
+
 {% endblock %}
 
-{% block post_content %}
-<div class="col-md-8">
-  {% for note in note_list %}
-  <h1><a href="{% url 'single' username=note.user.username pk=note.pk %}">{{note.title}}</a></h1>
-  <h3>{{note.message_html|safe}}</h3>
-  <h5>{{note.user}}</h5>
-
-    {% if user.is_authenticated and note.user == user %}
-      <a href="{% url 'delete' pk=note.pk %}" title="delete" class="btn btn-simple" >
-        <span class="glyphicon glyphicon-remove text-danger" aria-hidden='true'></span>
-        <span class="text-danger icon-label">Delete</span>
-      </a>
-    {% endif %}
-
-
+{% block note_content %}
+<div class="col-md-12">
+{% for note in note_list %}
+  {% include "storageApp/_note.html" %}
 {% endfor %}
+
 </div>
 
 {% endblock %}

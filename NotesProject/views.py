@@ -43,6 +43,7 @@ class UserNotes(generic.ListView):
     template_name = "storageApp/user_note_list.html"
 
     def get_queryset(self):
+
         try:
             self.note_user = User.objects.prefetch_related("notes").get(
                 username__iexact=self.kwargs.get("username")
@@ -51,6 +52,7 @@ class UserNotes(generic.ListView):
             raise Http404
         else:
             return self.note_user.notes.all()
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -73,7 +75,11 @@ class CreateNote(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
     # form_class = forms.PostForm
     fields = ('title', 'message',)
     model = models.Note
+    # I added success_url because it wasn't working without it...
+    # success_url = reverse_lazy("home")
 
+    def get_success_url(self):
+        return reverse_lazy('for_user', kwargs={'username': self.object.user})
     # def get_form_kwargs(self):
     #     kwargs = super().get_form_kwargs()
     #     kwargs.update({"user": self.request.user})
@@ -89,7 +95,10 @@ class CreateNote(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
 class DeleteNote(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     model = models.Note
     select_related = ("user",)
-    success_url = reverse_lazy("notes:all")
+    # success_url = reverse_lazy("home")
+
+    def get_success_url(self):
+        return reverse_lazy('for_user', kwargs={'username': self.object.user})
 
     def get_queryset(self):
         queryset = super().get_queryset()

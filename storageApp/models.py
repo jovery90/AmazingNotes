@@ -11,7 +11,7 @@ User = get_user_model()
 
 class Note(models.Model):
     user = models.ForeignKey(User,related_name='notes')
-    title = models.TextField(max_length=20,unique=True)
+    title = models.CharField(max_length=20,unique=True)
     created_at = models.DateTimeField(auto_now=True)
     message = models.TextField(max_length=255)
     message_html = models.TextField(editable=False)
